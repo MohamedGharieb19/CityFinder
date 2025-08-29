@@ -1,17 +1,14 @@
 package com.gharieb.cityfinder.presentation.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.gharieb.cityfinder.ui.theme.CityFinderTheme
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.net.toUri
+import com.gharieb.cityfinder.presentation.screen.CityScreen
+import com.gharieb.cityfinder.presentation.ui.theme.CityFinderTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,29 +18,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CityFinderTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                val context = LocalContext.current
+                CityScreen { city ->
+                    val uri =
+                        "geo:${city.coordinates.latitude},${city.coordinates.longitude}".toUri()
+                    context.startActivity(Intent(Intent.ACTION_VIEW, uri))
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CityFinderTheme {
-        Greeting("Android")
     }
 }
