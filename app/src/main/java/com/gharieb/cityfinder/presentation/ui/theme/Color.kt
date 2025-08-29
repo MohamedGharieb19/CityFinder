@@ -1,4 +1,4 @@
-package com.gharieb.cityfinder.ui.theme
+package com.gharieb.cityfinder.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

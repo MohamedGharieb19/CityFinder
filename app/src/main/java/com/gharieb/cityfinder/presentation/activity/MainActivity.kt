@@ -1,4 +1,4 @@
-package com.gharieb.cityfinder
+package com.gharieb.cityfinder.presentation.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

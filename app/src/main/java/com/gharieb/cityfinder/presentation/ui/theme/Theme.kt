@@ -1,6 +1,5 @@
-package com.gharieb.cityfinder.ui.theme
+package com.gharieb.cityfinder.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
